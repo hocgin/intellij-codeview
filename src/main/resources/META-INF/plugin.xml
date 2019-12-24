@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>in.hocg.plugin.code-view-plugin</id>
+    <name>Plugin display name here</name>
+    <vendor email="hocgin@gmail.com" url="http://github.com/hocgin">hocgin</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="in.hocg.plugin.test" class="in.hocg.plugin.code.view.TestAction" text="Test Name"
+                description="Test Desc">
+            <add-to-group group-id="CodeMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
