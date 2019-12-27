@@ -1,6 +1,6 @@
 package `in`.hocg.intellij.codeview.action
 
-import `in`.hocg.intellij.codeview.ui.TitleDialog
+import `in`.hocg.intellij.codeview.ui.UIManager
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -16,9 +16,7 @@ class OpenTitleDialogAction(text: String = "设置标题") : NotificationAction(
     }
 
     override fun actionPerformed(e: AnActionEvent, notification: Notification) {
-        val dialog = TitleDialog()
-        dialog.pack()
-        dialog.isVisible = true
+        UIManager.showTitleDialog()
     }
 
 }

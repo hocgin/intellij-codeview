@@ -3,6 +3,9 @@ package in.hocg.intellij.codeview.ui;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * @author hocgin
+ */
 public class TitleDialog extends JDialog {
     private JPanel contentPane;
     private JButton okButton;
@@ -11,38 +14,21 @@ public class TitleDialog extends JDialog {
 
     public TitleDialog() {
         setContentPane(contentPane);
-        setModal(true);
         getRootPane().setDefaultButton(okButton);
+        _initListener();
+    }
 
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() when cross is clicked
+    private void _initListener() {
+        okButton.addActionListener(e -> onOK());
+        cancelButton.addActionListener(e -> onCancel());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
@@ -55,14 +41,17 @@ public class TitleDialog extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        TitleDialog dialog = new TitleDialog();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+
+    public void showDialog() {
+        this.pack();
+        this.setVisible(true);
+        this.setModal(false);
+        this.setTitle("设置标题");
+        this.setSize(600, 400);
+        this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
     }
 }
