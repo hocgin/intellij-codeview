@@ -1,7 +1,8 @@
 <idea-plugin>
-    <id>in.hocg.plugin.code-view-plugin</id>
+    <id>in.hocg.intellij.code-view-plugin</id>
     <name>Plugin display name here</name>
     <vendor email="hocgin@gmail.com" url="http://github.com/hocgin">hocgin</vendor>
+    <version>2.0.0</version>
 
     <description><![CDATA[
     Enter short description for your plugin here.<br>
@@ -11,6 +12,11 @@
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.xdebugger</depends>
+
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -18,9 +24,29 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="in.hocg.plugin.test" class="in.hocg.plugin.code.view.TestAction" text="Test Name"
-                description="Test Desc">
+        <action id="in.hocg.intellij.codeview.ShareFocusLineAction"
+                class="in.hocg.intellij.codeview.action.ShareFocusLineAction"
+                text="Share Line And Copy Link" description="Share Line And Copy Link">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+        <action id="in.hocg.intellij.codeview.ShareSelectFileAction"
+                class="in.hocg.intellij.codeview.action.ShareSelectFileAction"
+                text="分享文件内容" description="分享文件内容">
+            <!--[Code] 标签下-->
             <add-to-group group-id="CodeMenu" anchor="first"/>
+            <!--[编辑框] -右键-> [浮窗] -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <!--[底部框] -右键-> [浮窗] -->
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+            <!--[Toolbar 启动栏] -->
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <!--[左侧 项目栏] -右键-> [浮窗] -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
+            <!--[编辑框] [Tab] -右键-> [浮窗] -->
+            <add-to-group group-id="EditorTabPopupMenu"/>
+            <!--[左侧 项目栏] [New] -->
+            <add-to-group group-id="NewGroup" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>
