@@ -62,8 +62,8 @@ object BalloonNotifications {
      * 创建通知
      */
     fun createNotification(
-        message: String,
         title: String = TITLE,
+        message: String,
         notificationType: NotificationType = NotificationType.INFORMATION,
         notificationListener: NotificationListener? = null,
         sticky: Boolean = false

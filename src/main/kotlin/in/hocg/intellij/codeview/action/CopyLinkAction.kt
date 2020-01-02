@@ -23,7 +23,7 @@ class CopyLinkAction(
 
     override fun actionPerformed(e: AnActionEvent, notification: Notification) {
         CopyPasteManagerEx.getInstance()
-            .setContents(StringSelection("""点击访问: $link"""))
+            .setContents(StringSelection(link))
     }
 
 }

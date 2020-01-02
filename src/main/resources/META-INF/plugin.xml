@@ -24,29 +24,47 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="in.hocg.intellij.codeview.ShareFocusLineAction"
-                class="in.hocg.intellij.codeview.action.ShareFocusLineAction"
-                text="Share Line And Copy Link" description="Share Line And Copy Link">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
+        <!--        <action id="in.hocg.intellij.codeview.ShareFocusLineAction"-->
+        <!--                class="in.hocg.intellij.codeview.action.ShareFocusLineAction"-->
+        <!--                text="Share Line And Copy Link" description="Share Line And Copy Link">-->
+        <!--            <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
+        <!--            &lt;!&ndash;[Toolbar 启动栏] &ndash;&gt;-->
+        <!--            <add-to-group group-id="MainToolBar" anchor="last"/>-->
+        <!--            &lt;!&ndash;[Code] 标签下&ndash;&gt;-->
+        <!--            <add-to-group group-id="CodeMenu" anchor="first"/>-->
+        <!--            &lt;!&ndash;[左侧 项目栏] [New] &ndash;&gt;-->
+        <!--            <add-to-group group-id="NewGroup" anchor="last"/>-->
+        <!--        </action>-->
         <action id="in.hocg.intellij.codeview.ShareSelectFileAction"
                 class="in.hocg.intellij.codeview.action.ShareSelectFileAction"
-                text="分享文件内容" description="分享文件内容">
-            <!--[Code] 标签下-->
-            <add-to-group group-id="CodeMenu" anchor="first"/>
-            <!--[编辑框] -右键-> [浮窗] -->
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <!--[底部框] -右键-> [浮窗] -->
-            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
-            <!--[Toolbar 启动栏] -->
-            <add-to-group group-id="MainToolBar" anchor="last"/>
+                text="分享整个文件内容">
             <!--[左侧 项目栏] -右键-> [浮窗] -->
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+        <action id="in.hocg.intellij.codeview.action.ShareFocusContentAction"
+                class="in.hocg.intellij.codeview.action.ShareFocusContentAction" text="分享整个文件内容">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="in.hocg.intellij.codeview.action.ShareSelectTextAction"
+                class="in.hocg.intellij.codeview.action.ShareSelectTextAction"
+                text="分享选中行">
+            <!--[编辑框] -右键-> [浮窗] -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
             <!--[编辑框] [Tab] -右键-> [浮窗] -->
             <add-to-group group-id="EditorTabPopupMenu"/>
-            <!--[左侧 项目栏] [New] -->
-            <add-to-group group-id="NewGroup" anchor="last"/>
+            <!--[底部框] -右键-> [浮窗] -->
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="in.hocg.intellij.codeview.action.ShareFocusLineAction"
+                class="in.hocg.intellij.codeview.action.ShareFocusLineAction" text="分享光标行内容">
+            <!--[编辑框] -右键-> [浮窗] -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="in.hocg.intellij.codeview.action.ShareClipboardAction"
+                class="in.hocg.intellij.codeview.action.ShareClipboardAction" text="分享粘贴板内容">
+            <!--[Toolbar 启动栏] -->
+            <add-to-group group-id="MainToolBar" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>

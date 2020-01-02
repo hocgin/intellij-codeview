@@ -6,6 +6,6 @@ package `in`.hocg.intellij.codeview.service.response
  * @author hocgin
  */
 data class ShareTextResponse(
-    val ok: String,
+    val ok: Boolean,
     val code: String
 )

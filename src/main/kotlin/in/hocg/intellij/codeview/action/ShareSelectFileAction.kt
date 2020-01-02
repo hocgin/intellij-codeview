@@ -1,7 +1,7 @@
 package `in`.hocg.intellij.codeview.action
 
+import `in`.hocg.intellij.codeview.service.AppsService
 import `in`.hocg.intellij.codeview.ui.BalloonNotifications
-import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
@@ -15,16 +15,19 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys
 class ShareSelectFileAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
+        val file = e.getData(PlatformDataKeys.PSI_FILE)
+        val text = file?.text
 
-        val file = e.getData(PlatformDataKeys.PSI_FILE)!!
-        val fileContent = file.text
+        if (text == null
+            || text.isBlank()
+        ) {
+            BalloonNotifications.showWarningNotification("请选中要分享的内容")
+            return
+        }
 
-
-        println("文件内容: ${fileContent}")
-        //        ActionManager.getInstance().registerAction();
-        BalloonNotifications.createNotification("消息", "通知", NotificationType.INFORMATION)
-            .addAction(OpenTitleDialogAction())
-            .addAction(CopyLinkAction())
-            .notify(project)
+        AppsService.shareTextAndNotify(
+            content = text,
+            project = project
+        )
     }
 }
