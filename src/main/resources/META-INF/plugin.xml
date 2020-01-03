@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>in.hocg.intellij.code-view-plugin</id>
-    <name>codeview</name>
+    <id>in.hocg.intellij.codeview</id>
+    <name>Code View</name>
     <vendor email="hocgin@gmail.com" url="http://github.com/hocgin">hocgin</vendor>
     <version>2.0.0</version>
 
