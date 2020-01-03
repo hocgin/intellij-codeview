@@ -1,5 +1,9 @@
 package in.hocg.intellij.codeview.ui;
 
+import com.intellij.openapi.project.ProjectManager;
+import in.hocg.intellij.codeview.service.AppsService;
+import org.assertj.core.util.Strings;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -11,8 +15,10 @@ public class TitleDialog extends JDialog {
     private JButton okButton;
     private JButton cancelButton;
     private JEditorPane titleEditor;
+    private final String content;
 
-    public TitleDialog() {
+    public TitleDialog(final String content) {
+        this.content = content;
         setContentPane(contentPane);
         getRootPane().setDefaultButton(okButton);
         _initListener();
@@ -32,7 +38,12 @@ public class TitleDialog extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
+        final String title = titleEditor.getText();
+        if (Strings.isNullOrEmpty(title)) {
+            return;
+        }
+
+        AppsService.INSTANCE.shareTextAndNotify(title, content, ProjectManager.getInstance().getDefaultProject());
         dispose();
     }
 

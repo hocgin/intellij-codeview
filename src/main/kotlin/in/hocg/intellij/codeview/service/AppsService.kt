@@ -8,6 +8,7 @@ import `in`.hocg.intellij.codeview.ui.BalloonNotifications
 import com.beust.klaxon.Klaxon
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectManager
 
 /**
  * Created by hocgin on 2020/1/2.
@@ -39,7 +40,7 @@ object AppsService {
     fun shareTextAndNotify(
         title: String = "",
         content: String,
-        project: Project
+        project: Project? = ProjectManager.getInstance().defaultProject
     ) {
         val url = shareText(title = title, content = content)!!
         val notification = BalloonNotifications.createNotification(
@@ -47,7 +48,7 @@ object AppsService {
             "分享成功",
             NotificationType.INFORMATION
         )
-        notification.addAction(OpenTitleDialogAction())
+        notification.addAction(OpenTitleDialogAction(content = content))
             .addAction(CopyLinkAction(link = url))
             .notify(project)
     }

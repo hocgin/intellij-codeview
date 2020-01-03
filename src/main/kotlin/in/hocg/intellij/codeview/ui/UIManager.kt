@@ -8,8 +8,8 @@ package `in`.hocg.intellij.codeview.ui
  */
 object UIManager {
 
-    fun showTitleDialog() {
-        TitleDialog().showDialog()
+    fun showTitleDialog(content: String) {
+        TitleDialog(content).showDialog()
     }
 
 }

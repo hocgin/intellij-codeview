@@ -11,12 +11,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent
  * 点击打开设置标题弹窗
  * @author hocgin
  */
-class OpenTitleDialogAction(text: String = "设置标题") : NotificationAction(text) {
+class OpenTitleDialogAction(
+    var content: String,
+    text: String = "设置标题"
+) : NotificationAction(text) {
     override fun update(e: AnActionEvent) {
     }
 
     override fun actionPerformed(e: AnActionEvent, notification: Notification) {
-        UIManager.showTitleDialog()
+        UIManager.showTitleDialog(this.content)
     }
 
 }
