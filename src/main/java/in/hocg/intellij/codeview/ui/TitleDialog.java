@@ -1,11 +1,13 @@
 package in.hocg.intellij.codeview.ui;
 
+import com.google.common.base.Strings;
 import com.intellij.openapi.project.ProjectManager;
 import in.hocg.intellij.codeview.service.AppsService;
-import org.assertj.core.util.Strings;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author hocgin
